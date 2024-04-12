@@ -22,12 +22,13 @@ class Solution {
     private void traverse(TreeNode root, int h,List<Integer> list){
         if(root == null)
             return;
+        int val = root.val;
         if(list.size() > h){
-            if(list.get(h) < root.val){
-                list.set(h,root.val);
+            if(list.get(h) < val){
+                list.set(h,val);
             }
         }else{
-            list.add(root.val);   
+            list.add(val);   
         }
         traverse(root.left, h+1, list);
         traverse(root.right, h+1, list);
