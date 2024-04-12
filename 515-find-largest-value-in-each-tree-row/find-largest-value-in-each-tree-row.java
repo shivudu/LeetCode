@@ -27,7 +27,7 @@ class Solution {
                 list.set(h,root.val);
             }
         }else{
-            list.add(h, root.val);   
+            list.add(root.val);   
         }
         traverse(root.left, h+1, list);
         traverse(root.right, h+1, list);
