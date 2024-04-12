@@ -24,9 +24,8 @@ class Solution {
             return;
         int val = root.val;
         if(list.size() > h){
-            if(list.get(h) < val){
+            if(list.get(h) < val)
                 list.set(h,val);
-            }
         }else{
             list.add(val);   
         }
