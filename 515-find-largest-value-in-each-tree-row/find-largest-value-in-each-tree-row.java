@@ -19,7 +19,7 @@ class Solution {
         traverse(root, 0, list);
         return list;
     }
-    private void traverse(TreeNode root, int h,List<Integer> list){
+    private static void traverse(TreeNode root, int h,List<Integer> list){
         if(root == null)
             return;
         int val = root.val;
