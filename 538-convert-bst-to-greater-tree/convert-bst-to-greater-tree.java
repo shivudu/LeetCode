@@ -14,16 +14,16 @@
  * }
  */
 class Solution {
+    int sum =0;
     public TreeNode convertBST(TreeNode root) {
-        traverse(root,new AtomicInteger(0));
+        traverse(root);
         return root;
     }
-    private void traverse(TreeNode root,AtomicInteger t){
+    private void traverse(TreeNode root){
         if(root == null)
             return;
-        traverse(root.right,t);
-        root.val = t.get()+root.val;
-        t.set(root.val);
-        traverse(root.left,t);
+        traverse(root.right);
+        root.val = (sum=sum+root.val);
+        traverse(root.left);
     }
 }
