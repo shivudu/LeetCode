@@ -14,11 +14,10 @@
  * }
  */
 class Solution {
-    List<Integer> list = new ArrayList<>();
+    int sum = 0; 
     public int goodNodes(TreeNode root) {
         traverse(root,root);
-        System.out.println(list);
-        return list.size();
+        return sum;
     }
     private void traverse(TreeNode root,TreeNode max){
         if(root == null)
@@ -27,7 +26,7 @@ class Solution {
             max = root;
        traverse(root.left,max);
         if(root.val >= max.val)
-            list.add(root.val);
+            sum++;
        traverse(root.right,max);
     }
 }
