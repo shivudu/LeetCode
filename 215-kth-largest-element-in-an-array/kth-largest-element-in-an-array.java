@@ -1,4 +1,5 @@
 class Solution {
+    /** 
     static class Heap{
         public List<Integer> heap = new ArrayList<>();
         public void add(int v){
@@ -53,13 +54,14 @@ class Solution {
             return res;
         }
     }
+    */
     public int findKthLargest(int[] nums, int k) {
-        Heap heap = new Heap();
+        PriorityQueue<Integer> heap = new PriorityQueue<>(Collections.reverseOrder());
         for(int n: nums)
             heap.add(n);
         int res = 0;
         for(int i=1;i<=k;i++){
-            res = heap.remove();
+            res = heap.poll();
         }
         return res;
     }
