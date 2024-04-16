@@ -1,25 +1,28 @@
 class Solution {
     public long maxScore(int[] nums1, int[] nums2, int k) {
-        int n = nums1.length; 
-        int[][] aug = new int[n][2]; 
-        for (int i = 0; i < n; ++i) {
-            aug[i][0] = nums1[i]; 
-            aug[i][1] = nums2[i]; 
+        int n = nums1.length;
+        // Max heap for nums2 min values
+        PriorityQueue<int[]> maxH = new PriorityQueue<>((a,b)->b[1]-a[1]);
+        // Min heap for nums2 sum values
+        PriorityQueue<Integer> minH = new PriorityQueue<>();
+        //load Max heap
+        for(int i=0;i<n;i++)
+            maxH.add(new int[]{nums1[i],nums2[i]});
+
+        long res = 0;
+        long total = 0;
+        int[] t;
+        while(!maxH.isEmpty()){
+            t = maxH.poll();
+            total += t[0];
+            minH.add(t[0]);
+            if(minH.size() > k)
+                total -= minH.poll();
+            if(minH.size() == k)
+                res = Math.max(res, t[1] * total);
         }
-        Arrays.sort(aug, new Comparator<int[]>(){
-            public int compare(int[] lhs, int[] rhs) {
-                return -Integer.compare(lhs[1], rhs[1]); 
-            }
-        }); 
-        PriorityQueue<Integer> pq = new PriorityQueue(); 
-        long ans = 0, total = 0; 
-        for (int i = 0; i < aug.length; ++i) {
-            total += aug[i][0]; 
-            pq.add(aug[i][0]); 
-            if (i >= k) total -= pq.poll(); 
-            if (i >= k-1) ans = Math.max(ans, total * aug[i][1]); 
-        }
-        return ans; 
+        return res;
+         
     }
 
 }
