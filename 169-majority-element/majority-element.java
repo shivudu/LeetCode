@@ -9,6 +9,8 @@ class Solution {
             c++;
         else
             c--;
+        if(c > nums.length/2)
+            break;
       }
       return res;
     }
