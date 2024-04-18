@@ -1,15 +1,18 @@
 class Solution {
     public int[] productExceptSelf(int[] nums) {
-        //int[] res =new int[nums.length];
-        backtrack(nums,1,0);
-        return nums;
-    }
-    public int backtrack(int[] nums,int prod, int i){
-        if(i == nums.length)
-            return 1;
-        int ri= backtrack(nums, nums[i]*prod, i+1);
-        int t = nums[i];
-        nums[i] = ri * prod;
-        return ri * t;
+        int[] res = new int[nums.length];
+        int[] p = new int[nums.length];
+        int[] s = new int[nums.length];
+        p[0] = 1;
+        for(int i=1;i<nums.length;i++){
+            p[i] = p[i-1] * nums[i-1];
+        }
+        s[nums.length-1] = 1;
+        for(int i=nums.length-2;i>=0;i--){
+            s[i] = s[i+1] * nums[i+1];
+        }
+        for(int i=0;i<nums.length;i++)
+            res[i] = p[i] * s[i];
+        return res;
     }
 }
