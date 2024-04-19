@@ -10,9 +10,9 @@ class Solution {
         s[nums.length-1] = 1;
         for(int i=nums.length-2;i>=0;i--){
             s[i] = s[i+1] * nums[i+1];
-        }
-        for(int i=0;i<nums.length;i++)
             res[i] = p[i] * s[i];
+        }
+        res[nums.length-1] = p[nums.length-1];
         return res;
     }
 }
