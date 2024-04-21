@@ -3,7 +3,6 @@ class Solution {
         int i = 0, j = s.length()-1;
         boolean res = true;
         while(i<=j){
-            System.out.println(s.charAt(i)+" "+s.charAt(j));
             if(!Character.isLetterOrDigit(s.charAt(i))){
                 i++;
                 continue;
