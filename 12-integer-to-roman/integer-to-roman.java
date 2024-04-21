@@ -5,20 +5,16 @@ class Solution {
         String res = "";
         while(num > 0){
             int rem = num % rom[i];
-            System.out.println("num:"+num+"rom:"+rom[i]);
-            System.out.println("num/rom:"+num/rom[i]);
             if( num / rom[i] == 0){
                 if(rom[i] - num <= getPre(rom[i])){
                     res += getValue(getPre(rom[i]))+""+getValue(rom[i])+"";
                     num = num - (rom[i] - getPre(rom[i]));
                 }
-                System.out.println("less:"+res);
             } else if (num / rom[i] > 0){
                 for(int j=1;j<=num / rom[i];j++)
                     res += getValue(rom[i])+"";
                 num = rem;
                 i--;
-                System.out.println("loop"+res);
             }
             i++;
         }
