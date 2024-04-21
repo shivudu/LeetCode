@@ -4,11 +4,11 @@ class Solution {
         boolean res = true;
         while(i<=j){
             System.out.println(s.charAt(i)+" "+s.charAt(j));
-            if(!Character.isAlphabetic(s.charAt(i)) && !Character.isDigit(s.charAt(i))){
+            if(!Character.isLetterOrDigit(s.charAt(i))){
                 i++;
                 continue;
             }
-            if(!Character.isAlphabetic(s.charAt(j)) && !Character.isDigit(s.charAt(j))){
+            if(!Character.isLetterOrDigit(s.charAt(j))){
                 j--;
                 continue;
             }
