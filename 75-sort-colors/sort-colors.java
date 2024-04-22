@@ -2,8 +2,8 @@ class Solution {
     static class Heap{
         int[] heap;
         int i;
-        public Heap(int[] s){
-            heap = s;
+        public Heap(int s){
+            heap = new int[s];
             i = 0;
         }
         public void add(int n){
@@ -48,7 +48,7 @@ class Solution {
         }
     }
     public void sortColors(int[] nums) {
-       Heap h = new Heap(nums);
+       Heap h = new Heap(nums.length);
        for(int n: nums)
             h.add(n);
         for(int i= nums.length-1;i>=0;i--)
