@@ -4,7 +4,6 @@ class Solution {
         int i = 0,m=0;
         int j = t.length()-1,n=s.length()-1;
         while(i<=j && m<=n){
-            System.out.println(count);
             if(t.charAt(i) == s.charAt(m)){
                 count++;
                 m++;
@@ -15,7 +14,6 @@ class Solution {
             }
             i++;
             j--;
-            System.out.println(count);
             if(count == s.length())
                 break;
         }
