@@ -14,7 +14,7 @@ class Solution {
             }
             i++;
             j--;
-            if(count == s.length())
+            if(count >= s.length())
                 break;
         }
         return count >= s.length();
