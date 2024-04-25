@@ -1,35 +1,25 @@
 class Solution {
     public int compress(char[] chars) {
-        if (chars.length <= 1)
-            return chars.length;
-
-        int len = 0; // Pointer to write compressed characters
-        int i = 0; // Pointer to iterate through the original array
-
-        while (i < chars.length) {
-            char cr = chars[i]; // Current character
-            int count = 1; // Count of consecutive occurrences of cr
-
-            // Count consecutive occurrences of cr
-            while (i + 1 < chars.length && chars[i] == chars[i + 1]) {
-                count++;
+        if(chars.length == 1)
+            return 1;
+        int len = 0;
+        int i = 0;
+        while(i<chars.length){
+            char cr = chars[i];
+            int c = 1;
+            while(i+1<chars.length && chars[i] == chars[i+1]){
+                c++;
                 i++;
             }
-
-            // Write compressed character to chars array
             chars[len++] = cr;
-
-            // Handle count > 1
-            if (count > 1) {
-                String countStr = String.valueOf(count);
-                for (char digit : countStr.toCharArray()) {
-                    chars[len++] = digit;
-                }
+            if(c > 1){
+                String no = String.valueOf(c);
+                chars[len] = cr;
+                for(int t=0;t<no.length();t++)
+                    chars[len++] = no.charAt(t); 
             }
-
-            i++; // Move to the next character in the original array
+            i++;
         }
-
-        return len; // Return the new length of the compressed array
+        return len;
     }
 }
