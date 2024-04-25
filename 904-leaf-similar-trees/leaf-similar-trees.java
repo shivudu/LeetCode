@@ -14,29 +14,29 @@
  * }
  */
 class Solution {
+    int tot1 = 0;
+    int tot2 = 0;
     public boolean leafSimilar(TreeNode root1, TreeNode root2) {
-        List<Integer> list1 = new ArrayList<>();
-        List<Integer> list2 = new ArrayList<>();
-        traverse(root1,list1);
-        traverse(root2,list2);
-        System.out.println(list1);
-        System.out.println(list2);
-        if(list1.size()!=list2.size())
-            return false;
-        for(int i=0;i<list1.size();i++){
-            if(!list1.get(i).equals(list2.get(i)))
-                return false;
-        }
-        return true;
+        StringBuilder str1 = new StringBuilder();
+        StringBuilder str2 = new StringBuilder();
+        traverse(root1,str1, true);
+        traverse(root2,str2, false);
+        System.out.println(str1);
+        System.out.println(str2);
+        return str1.toString().equals(str2.toString()) && tot1 == tot2;
     }
-    private void traverse(TreeNode root, List<Integer> list){
+    private void traverse(TreeNode root, StringBuilder list, boolean first){
         if(root == null)
             return;
         if(root.left == null && root.right == null){
-            list.add(root.val);
+            list.append(root.val);
+            if(first)
+                tot1+=root.val;
+            else
+                tot2 += root.val;
             return;
         }
-        traverse(root.left, list);
-        traverse(root.right, list);
+        traverse(root.left, list, first);
+        traverse(root.right, list, first);
     }
 }
