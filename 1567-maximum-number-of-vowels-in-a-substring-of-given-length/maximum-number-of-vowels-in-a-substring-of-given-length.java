@@ -7,9 +7,9 @@ class Solution {
                 oS++;
         int max = oS;
         for(int i = k;i<s.length();i++){
-            if(!contains(s.charAt(i-k)) && contains(s.charAt(i)))
+            if(contains(s.charAt(i)))
                 oS++;
-            else if(contains(s.charAt(i-k)) && !contains(s.charAt(i)))
+            if(contains(s.charAt(i-k)))
                 oS--;
             max = Math.max(oS,max);
         }
