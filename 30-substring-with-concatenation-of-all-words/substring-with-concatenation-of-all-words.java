@@ -5,29 +5,34 @@ class Solution {
             return result;
         }
 
+        int wordLength = words[0].length();
+        int totalLength = wordLength * words.length;
+        int n = s.length();
+        
+        // Create a map to store the frequency of words in the words array
         Map<String, Integer> wordFreq = new HashMap<>();
         for (String word : words) {
             wordFreq.put(word, wordFreq.getOrDefault(word, 0) + 1);
         }
 
-        int wordLength = words[0].length();
-        int totalLength = wordLength * words.length;
-
-        for (int i = 0; i <= s.length() - totalLength; i++) {
-            Map<String, Integer> seen = new LinkedHashMap<>(wordFreq); // Copy of wordFreq map
-            int j = i;
+        for (int i = 0; i <= n - totalLength; i++) {
+            Map<String, Integer> seen = new HashMap<>();
             int wordsFound = 0;
 
-            while (j < i + totalLength) {
+            // Process the substring in the sliding window
+            for (int j = i; j < i + totalLength; j += wordLength) {
                 String currWord = s.substring(j, j + wordLength);
-                if (!seen.containsKey(currWord) || seen.get(currWord) == 0) {
-                    break; // Not a valid word or all occurrences used
+                if (!wordFreq.containsKey(currWord)) {
+                    break;  // Not a valid word
                 }
-                seen.put(currWord, seen.get(currWord) - 1);
+                seen.put(currWord, seen.getOrDefault(currWord, 0) + 1);
+                if (seen.get(currWord) > wordFreq.get(currWord)) {
+                    break;  // Word frequency exceeded
+                }
                 wordsFound++;
-                j += wordLength;
             }
 
+            // Check if all words are found in the substring
             if (wordsFound == words.length) {
                 result.add(i);
             }
