@@ -25,11 +25,11 @@ class Solution {
             if(even == null){
                 even = tmp;
                 firstE = even;
-                System.out.println(even.val);
+                //System.out.println(even.val);
             } else{
                 even.next = tmp;
                 even = even.next;
-                System.out.println(even.val);
+                //System.out.println(even.val);
             }
             if(tmp.next !=null)
                 tmp = tmp.next.next;
@@ -38,7 +38,7 @@ class Solution {
         }
         even.next = null;
         prev.next = firstE;
-        System.out.println(prev.val);
+        //System.out.println(prev.val);
         return head;
     }
 }
