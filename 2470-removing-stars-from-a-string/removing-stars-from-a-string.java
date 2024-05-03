@@ -1,16 +1,17 @@
 class Solution {
     public String removeStars(String s) {
-        //Stack<Character> st = new Stack<>();
-        StringBuilder res = new StringBuilder();
-        int i = 0;
-        while(i < s.length()){
-            if(s.charAt(i) == '*'){
-                res.deleteCharAt(res.length()-1);
-            } else{
-                res.append(s.charAt(i));
+       int idx = 0;
+        int len = s.length();        
+        byte[] bytes = new byte[len];
+        s.getBytes(0, len, bytes, 0);
+        for (byte ch : bytes) {
+            if (ch == '*') {
+                idx--;
+            } else {
+                bytes[idx++] = ch;
             }
-            i++;
         }
-        return res.toString(); 
+
+        return new String(bytes, 0, idx);
     }
 }
