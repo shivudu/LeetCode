@@ -9,40 +9,26 @@
  * }
  */
 class Solution {
+    int size = 0;
+    ListNode ks=null, ke=null;
     public ListNode swapNodes(ListNode head, int k) {
-        int size = 0;
-        ListNode tmp = head;
-        ListNode kPrev = null;
-        ListNode kS = null;
-        ListNode prev = null;
-        while(tmp!=null){
-            size++;
-            if(size == k){
-                kS = tmp;
-                kPrev = prev;
-            }
-            prev = tmp;
-            tmp = tmp.next;
-        }
-        ListNode kEnd = null;
-        ListNode kEndPrev = null;
-        int kE = size - k;
-        int i = 0;
-        tmp = head;
-        prev = null;
-        while(tmp!=null){
-            i++;
-            if(i == kE+1){
-                kEndPrev = prev;
-                kEnd = tmp;
-            }
-            prev = tmp;
-            tmp = tmp.next;
-        }
-        int t = kS.val;
-        kS.val = kEnd.val;
-        kEnd.val = t;
+        traverse(head,k,1);
+        int t = ks.val;
+        ks.val = ke.val;
+        ke.val = t;
         return head;
 
+    }
+    private void traverse(ListNode head,int k,int index){
+        if(head == null)
+            return;
+        size++;
+        traverse(head.next,k,index+1);
+        if(size - k + 1 == index){
+            ke = head;
+        }
+        if(index == k){
+            ks = head;
+        }
     }
 }
