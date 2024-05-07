@@ -11,33 +11,19 @@
 class Solution {
   
     public ListNode swapNodes(ListNode head, int k) {
-        ListNode fast = head ;
-
+       ListNode fast = head ;
        ListNode slow = head ;
-
        for(int i = 1 ; i < k ; i++)
-       {
-
-        fast = fast.next ;
-
-       }
-
+            fast = fast.next ;
        ListNode temp = fast ;
-
        while(temp.next != null)
        {
          slow = slow.next ;
-
          temp = temp.next;
-
        }
-
        int tempval = slow.val;
-
        slow.val = fast.val;
-
        fast.val = tempval ;
-
        return head;
     }
     
