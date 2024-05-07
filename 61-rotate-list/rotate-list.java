@@ -20,7 +20,6 @@ class Solution {
             tail = tmp;
             tmp = tmp.next;
         }
-        System.out.println("size"+size);
         k = k > size ? k % size : k;
         if(k == 0 || size == k)
             return head;
@@ -28,11 +27,9 @@ class Solution {
         int indx = size - k;
         tmp = head;
         ListNode newH=null;
-        System.out.println(indx);
         while(tmp!=null){
             i++;
             if(i==indx){
-                System.out.println(tmp.val);
                 newH = tmp.next;
                 tmp.next = null;
             }
